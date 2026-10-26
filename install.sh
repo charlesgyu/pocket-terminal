@@ -1,11 +1,11 @@
 #!/bin/bash
 # 포켓 터미널 한 줄 설치 (Mac): curl -fsSL https://charlesgyu.github.io/pocket-terminal/install.sh | bash
-# 하는 일: 정해진 판(bd52fd2)의 묶음을 받아 지문(SHA256)이 맞을 때만 ~/.pocket-terminal/src 에 풀고,
+# 하는 일: 정해진 판(bfea613)의 묶음을 받아 지문(SHA256)이 맞을 때만 ~/.pocket-terminal/src 에 풀고,
 # pocket-terminal 명령을 ~/.local/bin 에 둔 뒤 설치를 이어 간다(tmux 설치, 서버 등록, 연결 QR).
 # 함수로 감싸 끝까지 받은 뒤에만 실행된다 (받다가 끊겨 반쪽만 실행되는 일이 없게)
 main() {
   set -euo pipefail
-  local VER="bd52fd2" SHA="435e8f77ae517953882265817a1c6545dcedd566d1de9c809a34c330e16a73bc" URL="https://charlesgyu.github.io/pocket-terminal/dist/pocket-terminal-bd52fd2.tar.gz"
+  local VER="bfea613" SHA="48255b89a4b0aedbee04c9c76f43406abc6f19627931e5a15b0c0155d895c63d" URL="https://charlesgyu.github.io/pocket-terminal/dist/pocket-terminal-bfea613.tar.gz"
   local PT="$HOME/.pocket-terminal" say
   say() { echo "[포켓 터미널] $*"; }
   [ "$(uname)" = Darwin ] || { say "지금은 Mac만 지원합니다."; exit 1; }

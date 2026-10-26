@@ -121,12 +121,13 @@ JS
 # 그래야 QR이 Claude 대화 기록이나 로그에 남지 않는다. 그림 파일은 10분 뒤 지운다.
 show_qr() {
   NODE="${NODE:-$(command -v node)}"
-  if [ -t 1 ] && [[ " $* " != *" --image "* ]]; then
+  # 기본은 QR 전용 새 창 (폰이 찍어 승인 창이 뜨면 저절로 닫히고, 이 창에는 QR이 남지 않는다). --here 면 이 창에 그린다
+  if [ -t 1 ] && [[ " $* " == *" --here "* ]]; then
     echo
-    "$NODE" "$APP/pair.js" "$@"
+    "$NODE" "$APP/pair.js" "${@/--here/}"
     echo
     say "휴대폰 카메라나 포켓 터미널 앱으로 위 QR을 찍으면 연결됩니다. 한 번만 찍으면 됩니다."
-    say "QR이 안 찍히면: pt.sh qr --light (밝은 배경 터미널) 또는 pt.sh qr --image (그림으로 열기)"
+    say "QR이 안 찍히면: pocket-terminal qr --light (밝은 배경 터미널) 또는 pocket-terminal qr --image (그림으로 열기)"
   else
     if [[ " $* " == *" --image "* ]]; then
       "$NODE" "$APP/pair.js" --image >/dev/null
@@ -134,7 +135,7 @@ show_qr() {
       say "이 컴퓨터 화면에 연결 QR 그림 창을 열었습니다. (그림은 10분 뒤 지워집니다)"
     else
       "$NODE" "$APP/pair.js" --window "$@" >/dev/null
-      say "이 컴퓨터에 새 터미널 창을 열어 연결 QR을 띄웠습니다. 휴대폰의 포켓 터미널 앱으로 찍으세요."
+      say "새 터미널 창에 연결 QR을 띄웠습니다. 포켓 터미널 앱으로 찍으세요. (찍고 나면 그 창은 저절로 닫힙니다)"
     fi
   fi
   say "찍은 뒤 이 컴퓨터에 승인 창이 뜨면, 폰에 보이는 확인 번호와 같은지 보고 1분 안에 y를 눌러 허용하세요."
