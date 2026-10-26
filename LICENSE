@@ -1,0 +1,26 @@
+Pocket Terminal plugin
+Copyright (c) 2026 contentsB. All rights reserved.
+
+This repository is published so that users of the Pocket Terminal app can
+install the computer-side plugin and read exactly what it runs on their
+computer.
+
+You may install and run this plugin, unmodified, on computers you own or are
+authorized to use, for the purpose of using the Pocket Terminal app.
+
+You may not, without prior written permission from contentsB:
+- copy, modify, merge, publish, distribute, sublicense or sell this software
+  or any part of it;
+- publish a modified version, or offer it under the name "Pocket Terminal"
+  or a confusingly similar name.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY ARISING FROM THE USE OF THE SOFTWARE, TO THE EXTENT PERMITTED
+BY LAW.
+
+Third-party packages installed by npm (node-pty, qrcode, ws) and the
+cloudflared program are not part of this repository and are governed by
+their own licenses.
+
+Contact: bavoya@gmail.com

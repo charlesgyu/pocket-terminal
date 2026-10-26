@@ -1,0 +1,16 @@
+#!/bin/bash
+# pocket-terminal: 포켓 터미널 컴퓨터 쪽 명령. 한 줄 설치가 ~/.pocket-terminal/src 에 풀고 ~/.local/bin 에 이 명령을 둔다.
+#   pocket-terminal            설치(또는 갱신)하고 켠 뒤 고르게 한다: 1. 스마트폰과 연결하기(QR) 2. 나중에 하기
+#   pocket-terminal qr         연결 QR 다시 띄우기
+#   pocket-terminal status     켜져 있는지, 중계 서버에 붙어 있는지
+#   pocket-terminal devices    허용한 기기 목록      pocket-terminal remove <번호>  기기 하나 빼기
+#   pocket-terminal off        끄고 자동 시작 없애기  pocket-terminal reset         연결 비밀값을 새로 만들기(모든 폰 끊김)
+set -euo pipefail
+SELF="$(readlink -f "$0" 2>/dev/null || echo "$0")"
+PT_SH="$(cd "$(dirname "$SELF")" && pwd)/pt.sh"
+case "${1:-}" in
+  ""|install|setup) exec bash "$PT_SH" install ;;
+  qr|status|off|devices|remove|reset|later|push) exec bash "$PT_SH" "$@" ;;
+  -h|--help|help) sed -n '2,8p' "$SELF" | sed 's/^# \{0,1\}//' ;;
+  *) echo "모르는 명령입니다: $1  (pocket-terminal help)"; exit 1 ;;
+esac
